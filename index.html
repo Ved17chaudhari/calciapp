@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR BY Ved Chaudhari</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        center {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #005f6b;
+        }
+        label {
+            font-size: 1.2em;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #005f6b;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        input[type="submit"]:hover {
+            background-color: #003f47;
+        }
+        h2 {
+            color: #005f6b;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h1>CALCULATOR APPLICATION</h1>
+    <form onsubmit="find()">
+        <label for="number">ENTER NUMBER:</label>
+        <input type="number" step="any" placeholder="ENTER YOUR NUMBER" id="num1" name="FIRST NUMBER">
+        <br><br>
+        <input type="submit" value="SQUARE">
+        <input type="submit" value="CUBE">
+        <input type="submit" value="SQUARE ROOT">
+    </form>
+    <h2 id="msg"></h2>
+    <script>
+        function find() {
+            event.preventDefault();
+            let num1 = document.getElementById("num1");
+            let msg = document.getElementById("msg");
+            let action = document.activeElement.value;
+
+            if (num1.value === "") {
+                alert("PLEASE FIRST ENTER A NUMBER");
+                msg.innerHTML = "";
+                num1.focus();
+                return;
+            }
+
+            let n1 = parseFloat(num1.value);
+
+            if (action === "SQUARE") {
+                let res = n1 * n1;
+                let ans = "SQUARE = " + res.toFixed(3);
+                msg.innerHTML = ans;
+
+            } else if (action === "CUBE") {
+                let res = n1 * n1 * n1;
+                let ans = "CUBE = " + res.toFixed(2);
+                msg.innerHTML = ans;
+                
+            } else if (action === "SQUARE ROOT") {
+                let res;
+                if (n1 < 0) {
+                    res = Math.sqrt(-n1) + "i";
+                } else {
+                    res = Math.sqrt(n1);
+                }
+                let ans = "SQUARE ROOT = " + res;
+                msg.innerHTML = ans;
+            }
+        }
+    </script>
+</center>
+</body>
+</html>
